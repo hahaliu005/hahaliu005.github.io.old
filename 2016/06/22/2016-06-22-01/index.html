@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>设计模式--中介者模式 | For the future, For my bad memory</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="定义
+用一个中介对象封装一系列的对象交互, 中介者使各对象不需要显示地相互作用, 从而使其耦合松散, 而且可以独立地改变它们之间的交互.
+
+示例
+一个采购(Purchase), 库存(Stock), 销售(Sale)通过中介者(Mediator)进行交互的示例:
+
+1234567891011121314151617181920212223242526272829303132333435363738">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式--中介者模式">
+<meta property="og:url" content="http://hahaliu005.github.io/2016/06/22/2016-06-22-01/index.html">
+<meta property="og:site_name" content="For the future, For my bad memory">
+<meta property="og:description" content="定义
+用一个中介对象封装一系列的对象交互, 中介者使各对象不需要显示地相互作用, 从而使其耦合松散, 而且可以独立地改变它们之间的交互.
+
+示例
+一个采购(Purchase), 库存(Stock), 销售(Sale)通过中介者(Mediator)进行交互的示例:
+
+1234567891011121314151617181920212223242526272829303132333435363738">
+<meta property="og:updated_time" content="2016-08-01T12:51:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="设计模式--中介者模式">
+<meta name="twitter:description" content="定义
+用一个中介对象封装一系列的对象交互, 中介者使各对象不需要显示地相互作用, 从而使其耦合松散, 而且可以独立地改变它们之间的交互.
+
+示例
+一个采购(Purchase), 库存(Stock), 销售(Sale)通过中介者(Mediator)进行交互的示例:
+
+1234567891011121314151617181920212223242526272829303132333435363738">
+  
+    <link rel="alternate" href="/atom.xml" title="For the future, For my bad memory" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">For the future, For my bad memory</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">hahaliu&#39;s technologe blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hahaliu005.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2016-06-22-01" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/22/2016-06-22-01/" class="article-date">
+  <time datetime="2016-06-22T00:00:00.000Z" itemprop="datePublished">2016-06-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      设计模式--中介者模式
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
+<li>用一个中介对象封装一系列的对象交互, 中介者使各对象不需要显示地相互作用, 从而使其耦合松散, 而且可以独立地改变它们之间的交互.</li>
+</ul>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><ul>
+<li>一个采购(Purchase), 库存(Stock), 销售(Sale)通过中介者(Mediator)进行交互的示例:</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * 中介者模式</div><div class="line"> */</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Mediator</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">private</span> $_purchase;</div><div class="line">    <span class="keyword">private</span> $_sale;</div><div class="line">    <span class="keyword">private</span> $_stock;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;_purchase = <span class="keyword">new</span> Purchase(<span class="keyword">$this</span>);</div><div class="line">        <span class="keyword">$this</span>-&gt;_sale = <span class="keyword">new</span> Sale(<span class="keyword">$this</span>);</div><div class="line">        <span class="keyword">$this</span>-&gt;_stock = <span class="keyword">new</span> Stock(<span class="keyword">$this</span>);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">execute</span><span class="params">(string $command, ...$args)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">switch</span> ($command) &#123;</div><div class="line">            <span class="keyword">case</span> <span class="string">'buy'</span>:</div><div class="line">                <span class="keyword">$this</span>-&gt;buyComputer($args[<span class="number">0</span>]);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> <span class="string">'sell'</span>:</div><div class="line">                <span class="keyword">$this</span>-&gt;sellComputer($args[<span class="number">0</span>]);</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> <span class="string">'offsell'</span>:</div><div class="line">                <span class="keyword">$this</span>-&gt;offSell();</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> <span class="string">'clear'</span>:</div><div class="line">                <span class="keyword">$this</span>-&gt;clearStock();</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">default</span>:</div><div class="line">                <span class="keyword">echo</span> <span class="string">"Unknow command : $command\n"</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">buyComputer</span><span class="params">(int $number)</span></span></div><div class="line">    &#123;</div><div class="line">        $sale = <span class="keyword">$this</span>-&gt;_sale-&gt;getSellStatus();</div><div class="line">        <span class="keyword">if</span> ($sale &lt; <span class="number">80</span>) &#123;</div><div class="line">            $number = $number / <span class="number">2</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"Buy computer $number\n"</span>;</div><div class="line">        <span class="keyword">$this</span>-&gt;_stock-&gt;increase($number);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">sellComputer</span><span class="params">(int $number)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">$this</span>-&gt;_stock-&gt;getStockNumber() &lt; $number) &#123;</div><div class="line">            <span class="keyword">$this</span>-&gt;_purchase-&gt;buyIBMComputer($number);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">$this</span>-&gt;_stock-&gt;decrease($number);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">offSell</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"Offsell IBM computer : &#123;$this-&gt;_stock-&gt;getStockNumber()&#125;\n"</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">private</span> <span class="function"><span class="keyword">function</span> <span class="title">clearStock</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;_sale-&gt;offSale();</div><div class="line">        <span class="keyword">$this</span>-&gt;_purchase-&gt;refuseBuyIBM();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AbstractColleague</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">protected</span> $_mediator;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(Mediator $mediator)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;_mediator = $mediator;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Purchase</span> <span class="keyword">extends</span> <span class="title">AbstractColleague</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">buyIBMComputer</span><span class="params">(int $number)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;_mediator-&gt;execute(<span class="string">'buy'</span>, $number);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">refuseBuyIBM</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"Do not buy IBM any more\n"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Stock</span> <span class="keyword">extends</span> <span class="title">AbstractColleague</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">private</span> $_computerNum = <span class="number">100</span>;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">increase</span><span class="params">(int $number)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;_computerNum += $number;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"Increase computer : $number\n"</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">decrease</span><span class="params">(int $number)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;_computerNum -= $number;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"Decrease computer : $number\n"</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getStockNumber</span><span class="params">()</span> : <span class="title">int</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;_computerNum;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">clearStock</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">echo</span> <span class="string">"Clean stock : $this-&gt;_computerNum\n"</span>;</div><div class="line">        <span class="keyword">$this</span>-&gt;_mediator-&gt;execute(<span class="string">'clear'</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sale</span> <span class="keyword">extends</span> <span class="title">AbstractColleague</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">sellIBMComputer</span><span class="params">(int $number)</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;_mediator-&gt;execute(<span class="string">'sell'</span>, $number);</div><div class="line">        <span class="keyword">echo</span> <span class="string">"Sell IBM computer : $number\n"</span>;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getSellStatus</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        $saleStatus = random_int(<span class="number">1</span>, <span class="number">100</span>);</div><div class="line">        <span class="keyword">echo</span> <span class="string">"The sale status is : $saleStatus\n"</span>;</div><div class="line">        <span class="keyword">return</span> $saleStatus;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">offSale</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;_mediator-&gt;execute(<span class="string">'offsell'</span>);</div><div class="line">        <span class="keyword">echo</span> <span class="string">"Off sale the computer\n"</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$mediator = <span class="keyword">new</span> Mediator();</div><div class="line"></div><div class="line"><span class="keyword">echo</span> <span class="string">"----For purchase computer\n"</span>;</div><div class="line">$mediator-&gt;execute(<span class="string">'buy'</span>, <span class="number">100</span>);</div><div class="line"></div><div class="line"><span class="keyword">echo</span> <span class="string">"----For sale computer\n"</span>;</div><div class="line">$mediator-&gt;execute(<span class="string">'sell'</span>, <span class="number">120</span>);</div><div class="line">$mediator-&gt;execute(<span class="string">'sell'</span>, <span class="number">120</span>);</div><div class="line"></div><div class="line"><span class="keyword">echo</span> <span class="string">"----For Stock clear\n"</span>;</div><div class="line">$mediator-&gt;execute(<span class="string">'clear'</span>);</div><div class="line"></div><div class="line"><span class="comment">/* output</span></div><div class="line">----For purchase computer</div><div class="line">The sale status is : 93</div><div class="line">Buy computer 100</div><div class="line">Increase computer : 100</div><div class="line">----For sale computer</div><div class="line">Decrease computer : 120</div><div class="line">The sale status is : 26</div><div class="line">Buy computer 60</div><div class="line">Increase computer : 60</div><div class="line">Decrease computer : 120</div><div class="line">----For Stock clear</div><div class="line">Offsell IBM computer : 20</div><div class="line">Off sale the computer</div><div class="line">Do not buy IBM any more</div><div class="line">*/</div></pre></td></tr></table></figure>
+<h2 id="优缺点与应用"><a href="#优缺点与应用" class="headerlink" title="优缺点与应用"></a>优缺点与应用</h2><ul>
+<li><p>中介者模式可以减少类间的依赖, 降低类间的耦合.</p>
+</li>
+<li><p>但是中介者类可能会膨胀得很大, 因为它需要处理一切的复杂逻辑.</p>
+</li>
+<li><p>中介者模式未必能将原本凌乱的逻辑整理得清清楚楚, 请慎用.</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hahaliu005.github.io/2016/06/22/2016-06-22-01/" data-id="cirp53aoy000g3qu2wvhricmh" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/design-pattern/">design pattern</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/06/23/2016-06-23-01/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          设计模式--命令模式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/19/2016-06-19-01/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">设计模式--原型模式</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/design-pattern/">design pattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/laravel/">laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mesos/">mesos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/design-pattern/" style="font-size: 17.5px;">design pattern</a> <a href="/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/tags/laravel/" style="font-size: 10px;">laravel</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/mesos/" style="font-size: 10px;">mesos</a> <a href="/tags/php/" style="font-size: 20px;">php</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/08/09/2016-08-09-01/">设计模式--访问者模式</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/08/2016-08-08-01/">设计模式--备忘录模式</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/07/2016-08-07-01/">设计模式--门面模式</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/06/2016-08-06-01/">设计模式--观察者模式</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/05/2016-08-05-01/">设计模式--组合模式</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 hahaliu005<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

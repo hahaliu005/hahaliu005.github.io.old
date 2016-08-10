@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>设计模式--责任鏈模式 | For the future, For my bad memory</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="定义
+使多个对象都有机会处理请求, 从而避免了请求的发送者和接受者之间的耦合关系, 将这些对象连成一条鏈,并沿着这条鏈传递该请求, 直到有对象处理它为止.
+
+示例
+一个层层请求的例子:
+
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式--责任鏈模式">
+<meta property="og:url" content="http://hahaliu005.github.io/2016/06/24/2016-06-24-01/index.html">
+<meta property="og:site_name" content="For the future, For my bad memory">
+<meta property="og:description" content="定义
+使多个对象都有机会处理请求, 从而避免了请求的发送者和接受者之间的耦合关系, 将这些对象连成一条鏈,并沿着这条鏈传递该请求, 直到有对象处理它为止.
+
+示例
+一个层层请求的例子:
+
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575">
+<meta property="og:updated_time" content="2016-08-01T12:51:52.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="设计模式--责任鏈模式">
+<meta name="twitter:description" content="定义
+使多个对象都有机会处理请求, 从而避免了请求的发送者和接受者之间的耦合关系, 将这些对象连成一条鏈,并沿着这条鏈传递该请求, 直到有对象处理它为止.
+
+示例
+一个层层请求的例子:
+
+1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575">
+  
+    <link rel="alternate" href="/atom.xml" title="For the future, For my bad memory" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">For the future, For my bad memory</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">hahaliu&#39;s technologe blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://hahaliu005.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-2016-06-24-01" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/24/2016-06-24-01/" class="article-date">
+  <time datetime="2016-06-24T00:00:00.000Z" itemprop="datePublished">2016-06-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      设计模式--责任鏈模式
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
+<li>使多个对象都有机会处理请求, 从而避免了请求的发送者和接受者之间的耦合关系, 将这些对象连成一条鏈,并沿着这条鏈传递该请求, 直到有对象处理它为止.</li>
+</ul>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><ul>
+<li>一个层层请求的例子:</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div></pre></td><td class="code"><pre><div class="line">abstract class Handler</div><div class="line">&#123;</div><div class="line">    const FATHER_LEVEL = 1;</div><div class="line">    const HUSBAND_LEVEL = 2;</div><div class="line">    const SON_LEVEL = 3;</div><div class="line">    </div><div class="line">    protected $level;</div><div class="line">    protected $nextHandler;</div><div class="line">    </div><div class="line">    public function __construct(int $level, Handler $nextHandler = null)</div><div class="line">    &#123;</div><div class="line">        $this-&gt;level = $level;</div><div class="line">        $this-&gt;nextHandler = $nextHandler;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public function handleMessage(Woman $woman)</div><div class="line">    &#123;</div><div class="line">        if ($this-&gt;level == $woman-&gt;getType()) &#123;</div><div class="line">            $this-&gt;response($woman);</div><div class="line">        &#125; elseif ($this-&gt;nextHandler !== null) &#123;</div><div class="line">            $this-&gt;nextHandler-&gt;handleMessage($woman);</div><div class="line">        &#125; else &#123;</div><div class="line">            echo &quot;Do not have handler to handle, aggree\n&quot;;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public function setNext(Handler $handler)</div><div class="line">    &#123;</div><div class="line">        $this-&gt;nextHandler = $handler;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    abstract public function response(Woman $woman);</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Father extends Handler</div><div class="line">&#123;</div><div class="line">    public function __construct()</div><div class="line">    &#123;</div><div class="line">        parent::__construct(static::FATHER_LEVEL);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public function response(Woman $woman)</div><div class="line">    &#123;</div><div class="line">        echo &quot;Woman ask for father\n&quot;;</div><div class="line">        echo $woman-&gt;getRequest();</div><div class="line">        echo &quot;Father aggree it\n&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Husband extends Handler</div><div class="line">&#123;</div><div class="line">    public function __construct()</div><div class="line">    &#123;</div><div class="line">        parent::__construct(static::HUSBAND_LEVEL);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public function response(Woman $woman)</div><div class="line">    &#123;</div><div class="line">        echo &quot;Woman ask for husband\n&quot;;</div><div class="line">        echo $woman-&gt;getRequest();</div><div class="line">        echo &quot;Husband aggree it\n&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Son extends Handler</div><div class="line">&#123;</div><div class="line">    public function __construct()</div><div class="line">    &#123;</div><div class="line">        parent::__construct(static::SON_LEVEL);</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public function response(Woman $woman)</div><div class="line">    &#123;</div><div class="line">        echo &quot;Woman ask for son\n&quot;;</div><div class="line">        echo $woman-&gt;getRequest();</div><div class="line">        echo &quot;Son aggree it\n&quot;;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">class Woman</div><div class="line">&#123;</div><div class="line">    private $type;</div><div class="line">    private $request;</div><div class="line">    </div><div class="line">    public function __construct( int $type, string $request)</div><div class="line">    &#123;</div><div class="line">        $this-&gt;type = $type;</div><div class="line">        switch ($type) &#123;</div><div class="line">            case Handler::FATHER_LEVEL:</div><div class="line">                $this-&gt;request = &quot;Daughter&apos;s request is:&quot; . $request;</div><div class="line">                break;</div><div class="line">            case Handler::HUSBAND_LEVEL:</div><div class="line">                $this-&gt;request = &quot;Wife&apos;s request is:&quot; . $request;</div><div class="line">                break;</div><div class="line">            case Handler::SON_LEVEL:</div><div class="line">                $this-&gt;request = &quot;Mother&apos;s request is:&quot; . $request;</div><div class="line">                break;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public function getType() : int</div><div class="line">    &#123;</div><div class="line">        return $this-&gt;type;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    public function getRequest() : string</div><div class="line">    &#123;</div><div class="line">        return $this-&gt;request;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$father = new Father();</div><div class="line">$husband = new Husband();</div><div class="line">$son = new Son();</div><div class="line"></div><div class="line">$father-&gt;setNext($husband);</div><div class="line">$husband-&gt;setNext($son);</div><div class="line"></div><div class="line">foreach(range(1, 5) as $i) &#123;</div><div class="line">    $woman = new Woman(random_int(Handler::FATHER_LEVEL,Handler::SON_LEVEL), &quot;I want to shopping\n&quot;);</div><div class="line">    $father-&gt;handleMessage($woman);</div><div class="line">&#125;</div><div class="line"></div><div class="line">/*</div><div class="line">Woman ask for father</div><div class="line">Daughter&apos;s request is:I want to shopping</div><div class="line">Father aggree it</div><div class="line">Woman ask for husband</div><div class="line">Wife&apos;s request is:I want to shopping</div><div class="line">Husband aggree it</div><div class="line">Woman ask for husband</div><div class="line">Wife&apos;s request is:I want to shopping</div><div class="line">Husband aggree it</div><div class="line">Woman ask for son</div><div class="line">Mother&apos;s request is:I want to shopping</div><div class="line">Son aggree it</div><div class="line">Woman ask for son</div><div class="line">Mother&apos;s request is:I want to shopping</div><div class="line">Son aggree it</div><div class="line">*/</div></pre></td></tr></table></figure>
+<h2 id="优缺点及应用"><a href="#优缺点及应用" class="headerlink" title="优缺点及应用"></a>优缺点及应用</h2><ul>
+<li><p>将请求了处理分了开来, 请求者可以不用知道是谁处理的</p>
+</li>
+<li><p>由于请求都进行了一次鏈式遍历, 在责任鏈很长的情况下, 对性能可能会造成一定的影响, 调试时逻辑可能也会比较复杂</p>
+</li>
+<li><p>如银行对不同币种的处理, 用户注册时对不同账号类型的处理, 都可以用到责任鏈模式</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://hahaliu005.github.io/2016/06/24/2016-06-24-01/" data-id="cirp53ap1000j3qu2m7cabfsx" class="article-share-link">Partager</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/design-pattern/">design pattern</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/06/25/2016-06-25-01/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Récent</strong>
+      <div class="article-nav-title">
+        
+          设计模式--装饰模式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/23/2016-06-23-01/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">设计模式--命令模式</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Mot-clés</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/design-pattern/">design pattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/laravel/">laravel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mesos/">mesos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubuntu/">ubuntu</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vim/">vim</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/design-pattern/" style="font-size: 17.5px;">design pattern</a> <a href="/tags/docker/" style="font-size: 12.5px;">docker</a> <a href="/tags/laravel/" style="font-size: 10px;">laravel</a> <a href="/tags/linux/" style="font-size: 15px;">linux</a> <a href="/tags/mesos/" style="font-size: 10px;">mesos</a> <a href="/tags/php/" style="font-size: 20px;">php</a> <a href="/tags/ubuntu/" style="font-size: 10px;">ubuntu</a> <a href="/tags/vim/" style="font-size: 10px;">vim</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">七月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">五月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/08/09/2016-08-09-01/">设计模式--访问者模式</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/08/2016-08-08-01/">设计模式--备忘录模式</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/07/2016-08-07-01/">设计模式--门面模式</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/06/2016-08-06-01/">设计模式--观察者模式</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/05/2016-08-05-01/">设计模式--组合模式</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 hahaliu005<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
