@@ -19,7 +19,7 @@ class Newspaper implements \SplSubject{
 class Newspaper implements \SplSubject{
     private $name;
     private $obser">
-<meta property="og:updated_time" content="2016-08-08T16:30:06.000Z">
+<meta property="og:updated_time" content="2016-08-10T17:02:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式--观察者模式">
 <meta name="twitter:description" content="定义定义对象单一和一对多的依赖关系, 使得每当一个对象改变状态, 则所有依赖于它的对象都会得到通知并被自动更新
@@ -103,90 +103,91 @@ class Newspaper implements \SplSubject{
       
         <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>定义对象单一和一对多的依赖关系, 使得每当一个对象改变状态, 则所有依赖于它的对象都会得到通知并被自动更新</p>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>下面是一个观察者模式的示例, PHP中已定义了两个两万的关于观察者模式的接口(SplSubject, SplObserver).</p>
-<pre><code>class Newspaper implements \SplSubject{
-    private $name;
-    private $observers = array();
-    private $content;
+<pre><code class="PHP"><span class="class"><span class="keyword">class</span> <span class="title">Newspaper</span> <span class="keyword">implements</span> \<span class="title">SplSubject</span></span>{
+    <span class="keyword">private</span> $name;
+    <span class="keyword">private</span> $observers = <span class="keyword">array</span>();
+    <span class="keyword">private</span> $content;
 
-    public function __construct($name) {
-        $this-&gt;name = $name;
+    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($name)</span> </span>{
+        <span class="keyword">$this</span>-&gt;name = $name;
     }
 
-    //add observer
-    public function attach(\SplObserver $observer) {
-        $this-&gt;observers[] = $observer;
+    <span class="comment">//add observer</span>
+    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">attach</span><span class="params">(\SplObserver $observer)</span> </span>{
+        <span class="keyword">$this</span>-&gt;observers[] = $observer;
     }
 
-    //remove observer
-    public function detach(\SplObserver $observer) {
+    <span class="comment">//remove observer</span>
+    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">detach</span><span class="params">(\SplObserver $observer)</span> </span>{
 
-        $key = array_search($observer,$this-&gt;observers, true);
-        if($key){
-            unset($this-&gt;observers[$key]);
+        $key = array_search($observer,<span class="keyword">$this</span>-&gt;observers, <span class="keyword">true</span>);
+        <span class="keyword">if</span>($key){
+            <span class="keyword">unset</span>(<span class="keyword">$this</span>-&gt;observers[$key]);
         }
     }
 
-    //set breakouts news
-    public function breakOutNews($content) {
-        $this-&gt;content = $content;
-        $this-&gt;notify();
+    <span class="comment">//set breakouts news</span>
+    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">breakOutNews</span><span class="params">($content)</span> </span>{
+        <span class="keyword">$this</span>-&gt;content = $content;
+        <span class="keyword">$this</span>-&gt;notify();
     }
 
-    public function getContent() {
-        return $this-&gt;content.&quot; ({$this-&gt;name})&quot;;
+    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getContent</span><span class="params">()</span> </span>{
+        <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;content.<span class="string">" ({$this-&gt;name})"</span>;
     }
 
-    //notify observers(or some of them)
-    public function notify() {
-        foreach ($this-&gt;observers as $value) {
-            $value-&gt;update($this);
+    <span class="comment">//notify observers(or some of them)</span>
+    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">notify</span><span class="params">()</span> </span>{
+        <span class="keyword">foreach</span> (<span class="keyword">$this</span>-&gt;observers <span class="keyword">as</span> $value) {
+            $value-&gt;update(<span class="keyword">$this</span>);
         }
     }
 }
 
-/**
+<span class="comment">/**
  * Observer,that who recieves news
- */
-class Reader implements SplObserver{
-    private $name;
+ */</span>
+<span class="class"><span class="keyword">class</span> <span class="title">Reader</span> <span class="keyword">implements</span> <span class="title">SplObserver</span></span>{
+    <span class="keyword">private</span> $name;
 
-    public function __construct($name) {
-        $this-&gt;name = $name;
+    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($name)</span> </span>{
+        <span class="keyword">$this</span>-&gt;name = $name;
     }
 
-    public function update(\SplSubject $subject) {
-        echo $this-&gt;name.&apos; is reading breakout news: &apos;.$subject-&gt;getContent() . &quot;\n&quot;;
+    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">update</span><span class="params">(\SplSubject $subject)</span> </span>{
+        <span class="keyword">echo</span> <span class="keyword">$this</span>-&gt;name.<span class="string">' is reading breakout news: '</span>.$subject-&gt;getContent() . <span class="string">"\n"</span>;
     }
 }
 
-$newspaper = new Newspaper(&apos;Newyork Times&apos;);
+$newspaper = <span class="keyword">new</span> Newspaper(<span class="string">'Newyork Times'</span>);
 
-$allen = new Reader(&apos;Allen&apos;);
-$jim = new Reader(&apos;Jim&apos;);
-$linda = new Reader(&apos;Linda&apos;);
+$allen = <span class="keyword">new</span> Reader(<span class="string">'Allen'</span>);
+$jim = <span class="keyword">new</span> Reader(<span class="string">'Jim'</span>);
+$linda = <span class="keyword">new</span> Reader(<span class="string">'Linda'</span>);
 
-//add reader
+<span class="comment">//add reader</span>
 $newspaper-&gt;attach($allen);
 $newspaper-&gt;attach($jim);
 $newspaper-&gt;attach($linda);
 
-//remove reader
+<span class="comment">//remove reader</span>
 $newspaper-&gt;detach($linda);
 
-//set break outs
-$newspaper-&gt;breakOutNews(&apos;USA break down!&apos;);
+<span class="comment">//set break outs</span>
+$newspaper-&gt;breakOutNews(<span class="string">'USA break down!'</span>);
 
-//=====output======
-//Allen is reading breakout news USA break down! (Newyork Times)
-//Jim is reading breakout news USA break down! (Newyork Times)
-</code></pre><h2 id="优缺点与应用"><a href="#优缺点与应用" class="headerlink" title="优缺点与应用"></a>优缺点与应用</h2><p>观察者与被观察者之间是抽象耦合的, 不管是增加观察者不是被观察者都非常容易扩展; 可以很方便的建立一套触发机制.</p>
+<span class="comment">//=====output======</span>
+<span class="comment">//Allen is reading breakout news USA break down! (Newyork Times)</span>
+<span class="comment">//Jim is reading breakout news USA break down! (Newyork Times)</span>
+</code></pre>
+<h2 id="优缺点与应用"><a href="#优缺点与应用" class="headerlink" title="优缺点与应用"></a>优缺点与应用</h2><p>观察者与被观察者之间是抽象耦合的, 不管是增加观察者不是被观察者都非常容易扩展; 可以很方便的建立一套触发机制.</p>
 <p>需要开发一个开发效率和运行效率问题, 尤其是在有很多观察者或者是观察者多级触发的情况下</p>
 <p>关联处理的场景和消息队列处理场景都会用到观察者模式</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://hahaliu005.github.io/2016/08/06/2016-08-06-01/" data-id="cirp53aps001i3qu2sn9hvzd8" class="article-share-link">Partager</a>
+      <a data-url="http://hahaliu005.github.io/2016/08/06/2016-08-06-01/" data-id="cirp53rr300184nu2ku2r9mw0" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/design-pattern/">design pattern</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/">php</a></li></ul>
